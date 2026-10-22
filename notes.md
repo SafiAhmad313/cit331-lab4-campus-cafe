@@ -11,7 +11,7 @@
 | Protocol in the address bar (http or https) | ... |
  
 ## Why is this address http and not https?
-... (two sentences
+... (two sentences)
 
 ## Bug log (Lab 4, Task 6)
  

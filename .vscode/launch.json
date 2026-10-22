@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open order.html",
-            "file": "c:\\xampp\\htdocs\\CIT331\\university-club\\cit331-lab4-campus-cafe\\order.html"
+            "file": "${workspaceFolder}/order.html"
         }
     ]
 }
