@@ -1,0 +1,306 @@
+/* ===== Campus Café: styles.css ===== */
+ 
+/* ---------- 1. Reset, tokens and base typography ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+ 
+:root {
+  --brand: #7a3e1d;
+  --brand-dark: #3b1f0e;
+  --accent: #d98c2b;
+  --bg: #faf6f1;
+  --surface: #ffffff;
+  --text: #2a1b12;
+  --muted: #6b5a4e;
+  --border: #e3d6c9;
+  --space: 16px;
+  --radius: 12px;
+}
+ 
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ---------- 2. Headings, links, focus ---------- */
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--brand-dark);
+  line-height: 1.2;
+}
+h1 { font-size: 2.25rem; margin: 0 0 var(--space); }
+h2 { font-size: 1.6rem;  margin: 0 0 var(--space); }
+h3 { font-size: 1.2rem;  margin: 0 0 8px; }
+ 
+a { color: var(--brand); }
+a:hover {
+  color: var(--brand-dark);
+  text-decoration-thickness: 3px;
+}
+ 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+}
+
+/* ---------- 3. Page shell ---------- */
+#main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+main > section,
+main > aside,
+main > figure {
+  margin: 0 0 32px;
+}
+h1 + p {
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+ 
+/* ---------- 4. Header and navigation ---------- */
+.site-header {
+  background: var(--brand-dark);
+  color: #fff;
+  padding: 12px 24px;
+}
+.brand {
+  color: #fff;
+  text-decoration: none;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.nav-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+.nav-list li { display: inline-block; }
+.nav-list a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+.nav-list a:not(.active):hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.nav-list a.active {
+  background: var(--accent);
+  color: var(--text);
+  font-weight: 700;
+}
+ 
+/* ---------- 5. Footer ---------- */
+.site-footer {
+  background: var(--brand-dark);
+  color: #fff;
+  padding: 20px 24px;
+}
+.site-footer p { margin: 4px 0; }
+.site-footer a { color: #fff; }
+
+/* ---------- 6. Hero, buttons, cards ---------- */
+.hero {
+  background: var(--brand);
+  color: #fff;
+  padding: 48px 32px;
+  border-radius: var(--radius);
+}
+.hero h1,
+.hero p {
+  color: #fff;
+}
+.hero h1 { margin-bottom: 12px; }
+ 
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+  color: #fff;
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+.btn-secondary:hover {
+  background: var(--brand-dark);
+  color: #fff;
+}
+ 
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(59, 31, 14, 0.08);
+}
+.logo-figure { text-align: center; }
+figcaption { color: var(--muted); font-size: 0.9rem; }
+
+/* ---------- 7. Menu, tables ---------- */
+.menu-group h2::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 1em;
+  margin-right: 10px;
+  background: var(--accent);
+  border-radius: 3px;
+  vertical-align: -0.12em;
+}
+.menu-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+.menu-item p { margin: 0; color: var(--muted); }
+.item-head h3 { margin: 0; }
+.price { font-weight: 700; color: var(--brand); }
+ 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+caption {
+  text-align: left;
+  padding: 8px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+thead th {
+  background: var(--brand-dark);
+  color: #fff;
+}
+tbody th { font-weight: 600; }
+tbody tr:nth-child(even) { background: #fbf6f0; }
+ 
+/* ---------- 8. Attribute selectors and pseudo-elements ---------- */
+a[href^="http"]::after {
+  content: " \2197";
+  font-size: 0.85em;
+}
+
+/* ---------- 9. Forms ---------- */
+form > fieldset {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin: 0 0 20px;
+}
+legend {
+  font-weight: 700;
+  padding: 0 8px;
+  color: var(--brand-dark);
+}
+label { font-weight: 600; }
+ 
+input, select, textarea {
+  font: inherit;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+}
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+input[required],
+select[required] {
+  border-left: 4px solid var(--accent);
+}
+input[placeholder]:not(:placeholder-shown):invalid {
+  border-color: #b3261e;
+}
+::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+#message {
+  min-height: 1.6em;
+  font-weight: 600;
+  color: #0a6b50;
+}
+
+/* ---------- 9. Forms ---------- */
+form > fieldset {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin: 0 0 20px;
+}
+legend {
+  font-weight: 700;
+  padding: 0 8px;
+  color: var(--brand-dark);
+}
+label { font-weight: 600; }
+ 
+input, select, textarea {
+  font: inherit;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+}
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+input[required],
+select[required] {
+  border-left: 4px solid var(--accent);
+}
+input[placeholder]:not(:placeholder-shown):invalid {
+  border-color: #b3261e;
+}
+::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+#message {
+  min-height: 1.6em;
+  font-weight: 600;
+  color: #0a6b50;
+}
