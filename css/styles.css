@@ -259,52 +259,6 @@ input[placeholder]:not(:placeholder-shown):invalid {
   color: #0a6b50;
 }
 
-/* ---------- 9. Forms ---------- */
-form > fieldset {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  margin: 0 0 20px;
-}
-legend {
-  font-weight: 700;
-  padding: 0 8px;
-  color: var(--brand-dark);
-}
-label { font-weight: 600; }
- 
-input, select, textarea {
-  font: inherit;
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: #fff;
-  color: var(--text);
-}
-input[type="radio"],
-input[type="checkbox"] {
-  width: auto;
-  margin-right: 8px;
-}
-input[required],
-select[required] {
-  border-left: 4px solid var(--accent);
-}
-input[placeholder]:not(:placeholder-shown):invalid {
-  border-color: #b3261e;
-}
-::placeholder {
-  color: var(--muted);
-  opacity: 1;
-}
-#message {
-  min-height: 1.6em;
-  font-weight: 600;
-  color: #0a6b50;
-}
-
 /* ---------- 10. Positioning ---------- */
  
 /* sticky: stays at the top while the page scrolls */
