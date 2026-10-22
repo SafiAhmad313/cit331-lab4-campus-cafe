@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #222222;
+  padding: 20px;
+}
+.menu a {
+  margin-right: 12px;
+}
+
+.btn {
+  background: #1e56d6;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+}
+
+.btn:hover {
+  background: #0b1f3a;
+  cursor: pointer;
+}
+
+.note {
+  font-style: italic;
+  color: #999999;
+}
