@@ -304,3 +304,175 @@ input[placeholder]:not(:placeholder-shown):invalid {
   font-weight: 600;
   color: #0a6b50;
 }
+
+/* ---------- 10. Positioning ---------- */
+ 
+/* sticky: stays at the top while the page scrolls */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+ 
+/* absolute: placed inside its nearest positioned parent */
+.menu-item { position: relative; }
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--accent);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+ 
+/* fixed: stays in the corner of the screen */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);
+  color: #fff;
+  font-size: 1.4rem;
+  text-decoration: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.back-to-top:hover { background: var(--brand-dark); color: #fff; }
+ 
+/* skip link: parked off-screen until it gets keyboard focus */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+.skip-link:focus {
+  left: 8px;
+  top: 8px;
+  z-index: 200;
+  background: #fff;
+  color: var(--brand-dark);
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+/* ---------- 11. Flexbox: header, nav, footer ---------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-list {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+ 
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+
+/* ---------- 12. Flexbox: cards and menu ---------- */
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.card-row > .card {
+  flex: 1 1 260px;
+}
+ 
+.menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.menu-item {
+  flex: 1 1 300px;
+  margin-bottom: 0;
+}
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+ 
+/* keep the footer at the bottom of short pages */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#main {
+  width: 100%;
+  flex: 1;
+}
+
+/* ---------- 13. Flexbox: form layout ---------- */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.form-row > .field,
+.form-row > .choice {
+  flex: 1 1 220px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+ 
+fieldset.choice {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+ 
+.saved-orders { margin-top: 40px; }
+.table-wrap { overflow-x: auto; margin-bottom: 16px; }
+
+/* ---------- 14. Responsive ---------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+ 
+@media (max-width: 768px) {
+  h1 { font-size: 1.9rem; }
+  #main { padding: 16px; }
+  .hero { padding: 32px 20px; }
+  .site-header { flex-direction: column; align-items: flex-start; }
+}
+ 
+@media (max-width: 480px) {
+  .nav-list { flex-wrap: wrap; }
+  .btn { display: block; width: 100%; text-align: center; }
+  .site-footer { flex-direction: column; align-items: flex-start; }
+}
