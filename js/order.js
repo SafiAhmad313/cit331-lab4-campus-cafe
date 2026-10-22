@@ -6,13 +6,33 @@ const tbody = document.querySelector("#orders-body");
 const message = document.querySelector("#message");
 const clearButton = document.querySelector("#clear-orders");
  
-// Read the saved orders. If nothing is saved, or the data is damaged, use an empty list.
+function isSavedOrder(order) {
+  return order !== null
+    && typeof order === "object"
+    && typeof order.name === "string"
+    && typeof order.phone === "string"
+    && typeof order.item === "string"
+    && typeof order.size === "string"
+    && typeof order.qty === "number"
+    && typeof order.pickup === "string"
+    && Array.isArray(order.extras)
+    && order.extras.every(function (extra) {
+      return typeof extra === "string";
+    })
+    && typeof order.notes === "string";
+}
+
 function loadOrders() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  } catch (error) {
+  const savedOrders = localStorage.getItem(STORAGE_KEY);
+  if (savedOrders === null) {
     return [];
   }
+
+  const orders = JSON.parse(savedOrders);
+  if (!Array.isArray(orders) || !orders.every(isSavedOrder)) {
+    throw new TypeError("Saved order data has an invalid format.");
+  }
+  return orders;
 }
  
 function saveOrders(orders) {
@@ -27,8 +47,16 @@ function addCell(row, text) {
 }
  
 function render() {
-  const orders = loadOrders();
   tbody.innerHTML = "";
+  let orders;
+
+  try {
+    orders = loadOrders();
+  } catch (error) {
+    console.error("Could not load saved orders.", error);
+    message.textContent = "Saved orders could not be loaded. Clear them to continue.";
+    return;
+  }
  
   if (orders.length === 0) {
     const row = document.createElement("tr");
@@ -66,9 +94,15 @@ form.addEventListener("submit", function (event) {
     notes: data.get("notes").trim()
   };
  
-  const orders = loadOrders();
-  orders.push(order);
-  saveOrders(orders);
+  try {
+    const orders = loadOrders();
+    orders.push(order);
+    saveOrders(orders);
+  } catch (error) {
+    console.error("Could not save the order.", error);
+    message.textContent = "Could not save your order in this browser.";
+    return;
+  }
  
   form.reset();
   message.textContent = "Thank you, " + order.name + "! Your order has been saved.";
@@ -76,7 +110,13 @@ form.addEventListener("submit", function (event) {
 });
  
 clearButton.addEventListener("click", function () {
-  localStorage.removeItem(STORAGE_KEY);
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    console.error("Could not clear saved orders.", error);
+    message.textContent = "Could not clear saved orders in this browser.";
+    return;
+  }
   message.textContent = "All saved orders were cleared.";
   render();
 });
